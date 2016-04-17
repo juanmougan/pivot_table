@@ -1,0 +1,20 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pivot Table example</title>
+  <script>
+    $(function() {
+      $.getJSON("input.json", function(processInput) {
+        $("#output").pivotUI(processInput);
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.0.2/c3_renderers.min.js"></script>
+  <div id="output"></div>
+</body>
+</html>
