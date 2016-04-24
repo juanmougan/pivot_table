@@ -2,19 +2,53 @@
 
 <html lang="en">
 <head>
+  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.0.2/c3_renderers.min.js"></script>
   <meta charset="utf-8">
   <title>Pivot Table example</title>
+
+   <script type="text/javascript">
+   /*
+        $(function () {
+            var derivers = $.pivotUtilities.derivers;
+            var renderers = $.extend($.pivotUtilities.renderers,
+                    $.pivotUtilities.d3_renderers);
+
+            $.ajax({
+                type: 'GET',
+                url: '/json/',
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                cache: false,
+                success: function (data) {
+                    $("#output").pivotUI(data, {
+                        renderers: renderers,
+                        //cols: ["AdminOrg", "OwningOrg"],
+                        cols: ["consultant_name", "client_name", "task_name","task_date","task_duration","consultant_cost","client_amount"],
+                        // "consultant_name","client_name","task_name","task_date","task_duration","consultant_cost","client_amount","task_cost_related","revenue"
+                        //rows: ["ResourceId", "OsId", "Hostnames"],
+                        rendererName: "Table"
+                    }, true, "en");
+                },
+                error: function (d, textStatus, error) { console.error("getJSON failed, status: " + textStatus + ", error: " + error); },
+                headers: { "Access-Control-Allow-Origin": "*" }
+            });
+        });
+  */
+  </script>
+
   <script>
     $(function() {
-      $.getJSON("input.json", function(processInput) {
-        $("#output").pivotUI(processInput);
+      var derivers = $.pivotUtilities.derivers;
+      $.getJSON("/json", function(mps) {
+        $("#output").pivotUI(jQuery.parseJSON(mps.d));
       });
     });
   </script>
+
 </head>
 
 <body>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.0.2/c3_renderers.min.js"></script>
   <div id="output"></div>
 </body>
 </html>
