@@ -14,6 +14,10 @@ get '/' do
   send_file 'index.html'
 end
 
+get '/pivot' do
+  send_file 'pivot_example.html'
+end
+
 get '/json' do
    send_file 'input.json'
 end
